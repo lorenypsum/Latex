@@ -26,14 +26,7 @@
 O problema da \textit{r-arborescência de custo mínimo} consiste em, dado um grafo dirigido com custos nas arestas, encontrar um subgrafo orientado enraizado em \(r\) que conecte \(r\) a todos os demais vértices por caminhos direcionados, minimizando a soma dos custos das arestas selecionadas.  
 
 \paragraph{}
-Ao longo do tempo, diversos algoritmos foram propostos para resolver esse problema, 
-entre os quais se destacam: o método de Chu--Liu/Edmonds, 
-baseado na contração de ciclos \cite{chu1965,edmonds1967optimum}, 
-e a abordagem dual em duas fases de András Frank, 
-fundamentada em cortes dirigidos \cite{frank2014}. 
-Ambas conduzem a soluções ótimas, embora partam de princípios distintos. 
-A análise comparativa aprofunda os conceitos matemáticos associados à 
-compreensão de r-arborescências.  
+Ao longo das últimas décadas, consolidaram-se duas famílias clássicas de métodos: (i) o algoritmo de Chu--Liu/Edmonds, que opera por normalização dos custos das arestas de entrada, seleção sistemática de arcos de custo zero e contração de ciclos até obter um grafo reduzido, seguido de reexpansão para reconstrução da solução \cite{chu1965,edmonds1967optimum}; e (ii) a abordagem dual em duas fases de András Frank, fundamentada em cortes dirigidos, na qual se maximiza uma função de cortes c-viável para induzir 0-arestas e, em seguida, extrai-se a arborescência apenas a partir dessas arestas \cite{frank2014}. Embora assentados em princípios distintos — contração de ciclos no plano primal versus empacotamento/dualidade por cortes —, ambos os paradigmas produzem soluções ótimas e tornam explícitas as relações estruturais em grafos dirigidos e a noção de r-arborescência.  
 
 \paragraph{}
 Neste trabalho, realiza-se a análise e implementação desses algoritmos, 
