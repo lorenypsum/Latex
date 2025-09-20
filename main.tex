@@ -23,14 +23,26 @@
 \section{Introdução}
 
 \paragraph{}
-O problema da \textit{r-arborescência de custo mínimo} consiste em determinar uma subestrutura em grafo dirigido que consiste em uma conexão de um vértice \(r\) aos demais vértices do grafo, respeitando a orientação dos arcos e minimizando o custo total associado.  
+O problema da \textit{r-arborescência de custo mínimo} consiste em, dado um grafo dirigido com custos nas arestas, encontrar um subgrafo orientado enraizado em \(r\) que conecte \(r\) a todos os demais vértices por caminhos direcionados, minimizando a soma dos custos das arestas selecionadas.  
 
 \paragraph{}
-Diversos algoritmos foram propostos ao longo do tempo para a resolução deste problema, destacando-se o método de Chu--Liu/Edmonds, baseado em contrações de ciclos \cite{chu1965,edmonds1967optimum}, e o algoritmo de duas fases de András Frank, que adota uma perspectiva dual fundamentada em cortes dirigidos \cite{frank2014}. Ambos garantem soluções ótimas, mas oferecem abordagens conceituais distintas, cuja análise comparativa fornece aprofundamento dos conceitos matemáticos envolvidos na compreensão de r-arborescências.  
+Ao longo do tempo, diversos algoritmos foram propostos para resolver esse problema, 
+entre os quais se destacam: o método de Chu--Liu/Edmonds, 
+baseado na contração de ciclos \cite{chu1965,edmonds1967optimum}, 
+e a abordagem dual em duas fases de András Frank, 
+fundamentada em cortes dirigidos \cite{frank2014}. 
+Ambas conduzem a soluções ótimas, embora partam de princípios distintos. 
+A análise comparativa aprofunda os conceitos matemáticos associados à 
+compreensão de r-arborescências.  
 
 \paragraph{}
-Neste trabalho, realiza-se a análise e implementação desses algoritmos, com ênfase especial na busca de \textit{r-arborescência inversa de custo mínimo}, explorando tanto os aspectos teóricos quanto os computacionais da estrutura e dos seus respectivos algoritmos de busca. Além disso, desenvolveu-se uma aplicação web didática com interface interativa que possibilita a visualização passo a passo da execução dos algoritmos em instâncias de grafos dirigidos, tornando-os mais acessíveis a estudantes e educadores.  
+Neste trabalho, realiza-se a análise e implementação desses algoritmos, 
+que envolvem a busca de \textit{r-arborescência inversa de custo mínimo}, 
+A dissertação explora tanto os aspectos teóricos quanto os computacionais 
+da estrutura e dos seus respectivos algoritmos de busca.
+Adicionalmente, desenvolveu-se uma aplicação web didática com interface interativa que possibilita a visualização passo a passo da execução dos algoritmos em instâncias de diferentes grafos dirigidos, tornando-os mais acessíveis a estudantes e educadores.  
 
+\paragraph{}
 A proposta alia, portanto, três dimensões complementares:  
 \begin{enumerate}
     \item \textbf{Análise teórica}: revisão de fundamentos de grafos, arborescências e formulações primal e dual;
@@ -38,14 +50,11 @@ A proposta alia, portanto, três dimensões complementares:
     \item \textbf{Aplicação pedagógica}: desenvolvimento de uma ferramenta interativa para experimentação e aprendizado visual.
 \end{enumerate}
 
-Dessa forma, este trabalho contribui não apenas para o aprofundamento conceitual sobre arborescências de custo mínimo, mas também para a produção de recursos didáticos que favorecem a compreensão e a difusão de algoritmos fundamentais da teoria dos grafos.
+Dessa forma, este trabalho contribui para o aprofundamento conceitual sobre arborescências de custo mínimo, e para a produção de recursos didáticos que favorecem a compreensão e a difusão de algoritmos fundamentais da teoria dos grafos.
 
-\section{Algoritmo Chu e Liu (1965)}
+\section{Definições Preliminares}
 \paragraph{}
-Nesse capítulo, abordaremos o problema de computar uma r-arborescência de custo mínimo em um grafo dirigido através de um algoritmo guloso de múltiplas fases. O algoritmo para resolver esse problema é geralmente atribuído a Chu e Liu (1965) e Edmonds (1967) de forma independente.
-
-\paragraph{}
-Antes de falarmos do problema e do algoritmo em si, precisaremos apresentar noções pertinentes à compreensão do problema. Sendo elas, a definição de grafo dirigido e conceitos pertinentes a essa definição, caracterização de ciclo nessa estrutura, o que vem a ser uma r-arborescência, função de custo e o problema de busca de uma r-arborescência de custo mínimo, algoritmos gulosos e sua aplicação em problemas desse tipo. Em seguida, precisaremos apresentar alguns lemas e teoremas dentro desse contexto, para finalmente apresentarmos as ideias do algoritmo.
+Neste capítulo, apresentamos os conceitos essenciais para compreender o problema de obter uma r-arborescência de custo mínimo em grafos dirigidos, bem como os algoritmos empregados em sua resolução. Abordaremos, em ordem, (i) a definição de grafo dirigido e noções correlatas; (ii) caminhos, ciclos e subdigrafos; (iii) o conceito de r-arborescência; (iv) a função de custo e a formulação do problema de r-arborescência de custo mínimo; e (v) princípios de algoritmos gulosos e sua aplicação a esse problema. Na sequência, enunciamos lemas e teoremas fundamentais que embasam as ideias algorítmicas desenvolvidas nas seções posteriores.
 
 \subsection{Definições}
 \paragraph{}
